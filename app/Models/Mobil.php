@@ -10,6 +10,6 @@ class Mobil extends Model
     protected $table = 'mobil';
     use HasFactory;
     public function stock(){
-        return $this->hasMany(stockMobil::class);
+        return $this->hasMany(StockMobil::class);
     }
 }
