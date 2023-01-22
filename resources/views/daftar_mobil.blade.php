@@ -6,6 +6,11 @@
 @endsection
 
 @section('content')
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <div class="card shadow mb-4">
     <div class="d-sm-flex  card-header py-3 justify-content-between mb-4">
         <h6 class="m-0 font-weight-bold text-primary">Daftar Mobil</h6>

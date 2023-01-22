@@ -2,6 +2,11 @@
 @section('title','tambah-mobil')
 @section('content')
 
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 <div class="card shadow mb-4">
     <div class="d-sm-flex  card-header py-3 justify-content-between mb-4">
         <h6 class="m-0 font-weight-bold text-primary">Tambah Mobil</h6>

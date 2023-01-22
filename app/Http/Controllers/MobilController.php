@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mobil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MobilController extends Controller
 {
@@ -27,7 +28,7 @@ class MobilController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $validated = Validator::make($request->all(),[
             'type' => 'required|string|max:255',
             'merk' => 'required|string|max:255',
             'jumlah_kursi' => 'required|integer',
@@ -40,8 +41,14 @@ class MobilController extends Controller
 
         ]);
 
-        Mobil::create($request->all());
+        if ($validated->fails()) {
+            // input gagal, mengirimkan session gagal
+            session()->flash('error', 'Gagal menambahkan data, pastikan semua isian terisi.');
+            return redirect('/tambah-mobil');
+        }
 
-        return redirect('/daftar-mobil')->with('success','Mobil berhasil ditambahkan');
+        Mobil::create($request->all());
+        session()->flash('success', 'Data berhasil ditambahkan.');
+        return redirect('/daftar-mobil');
     }
 }
