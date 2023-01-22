@@ -7,8 +7,9 @@
 
 @section('content')
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
+    <div class="d-sm-flex  card-header py-3 justify-content-between mb-4">
         <h6 class="m-0 font-weight-bold text-primary">Daftar Mobil</h6>
+        <a href="/tambah-mobil" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Tambah Mobil</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -20,11 +21,13 @@
                         <th>Merk</th>
                         <th>Jumlah Kursi</th>
                         <th>Bahan Bakar</th>
-                        <th>Harga Sewa Per Jam</th>
-                        <th>Harga Sewa Per Hari</th>
-                        <th>Jumlah</th>
-                        <th>Tersedia</th>
-                        <th>Dipinjam</th>
+                        <th>Warna</th>
+                        <th>Tahun</th>
+                        <th>Nopol</th>
+                        <th>Harga Sewa/Jam</th>
+                        <th>Harga Sewa/Hari</th>
+                        <th>status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,13 +38,17 @@
                         <td>{{$item->merk}}</td>
                         <td>{{$item->jumlah_kursi}}</td>
                         <td>{{$item->bahan_bakar}}</td>
+                        <td>{{$item->warna }}</td>
+                        <td>{{$item->tahun }}</td>
+                        <td>{{$item->nopol }}</td>
                         <td>{{$item->harga_sewa_jam}}</td>
                         <td>{{$item->harga_sewa_hari}}</td>
-                        @foreach($item->stock as $stock)
-                        <td>{{ $stock->jumlah }}</td>
-                        <td>{{ $stock->tersedia }}</td>
-                        <td>{{ $stock->pinjam }}</td>
-                        @endforeach
+                        @if($item->status=='1')
+                        <td style="color:green">tersedia</td>
+                        @else
+                        <td style="color:red">dipinjam</td>
+                        @endif
+                        <td>Edit</td>
 
                     </tr>
                     @endforeach

@@ -9,7 +9,20 @@ class Mobil extends Model
 {
     protected $table = 'mobil';
     use HasFactory;
-    public function stock(){
+    public function stock()
+    {
         return $this->hasMany(StockMobil::class);
     }
+    protected $fillable = [
+        'type',
+        'merk',
+        'jumlah_kursi',
+        'bahan_bakar',
+        'warna',
+        'tahun',
+        'nopol',
+        'harga_sewa_jam',
+        'harga_sewa_hari',
+        'status'
+    ];
 }

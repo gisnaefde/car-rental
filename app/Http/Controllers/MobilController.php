@@ -9,7 +9,7 @@ class MobilController extends Controller
 {
     // API
     public function index () {
-        $mobil = Mobil::with('stock')->get();
+        $mobil = Mobil::all();
 
         return response()->json($mobil);
     }
@@ -17,27 +17,31 @@ class MobilController extends Controller
 
     //Monolite
     public function daftar_mobil(){
-        $mobil = Mobil::with('stock')->get();
+        $mobil = Mobil::all();
         return view('daftar_mobil',['daftar_mobil'=>$mobil]);
     }
 
+    public function tambah_mobil(){
+        return view('tambah_mobil');
+    }
 
-    public function add_mobil(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
-            'type' => ['required', 'string', 'max:255'],
-            'merk' => ['required', 'string', 'max:255'],
-            'jumlah_kursi' => ['required', 'integer'],
-            'bahan_bakar' => ['required', 'string', 'max:255'],
-            'harga_sewa' => ['required', 'integer']
-        ]);
+            'type' => 'required|string|max:255',
+            'merk' => 'required|string|max:255',
+            'jumlah_kursi' => 'required|integer',
+            'bahan_bakar' => 'required|string|max:255',
+            'warna' => 'required|string|max:255',
+            'tahun' => 'required|integer',
+            'nopol' => 'required|string|max:255',
+            'harga_sewa_jam' => 'required|integer',
+            'harga_sewa_hari' => 'required|integer',
 
-        if ($validated->fails()) {
-            return redirect('/mobil/create')->withErrors($validated)->withInput();
-        }
+        ]);
 
         Mobil::create($request->all());
 
-        return redirect('/mobil')->with('success', 'Mobil berhasil ditambahkan');
+        return redirect('/daftar-mobil')->with('success','Mobil berhasil ditambahkan');
     }
 }
