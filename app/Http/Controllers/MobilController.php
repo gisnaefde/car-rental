@@ -38,7 +38,7 @@ class MobilController extends Controller
             'nopol' => 'required|string|max:255',
             'harga_sewa_jam' => 'required|integer',
             'harga_sewa_hari' => 'required|integer',
-
+            'car_image' => 'required',
         ]);
 
         if ($validated->fails()) {
@@ -47,7 +47,14 @@ class MobilController extends Controller
             return redirect('/tambah-mobil');
         }
 
-        Mobil::create($request->all());
+        $nameImage="";
+        if($request->file('car_image')){
+            $name = $request->car_image->getClientOriginalName();
+            $nameImage = now()->timestamp.'-'.$name;
+            $request->car_image->storeAs('car_image', $nameImage);
+        }
+        $request['car_image'] = $nameImage;
+        $mobil = Mobil::create($request->all());
         session()->flash('success', 'Data berhasil ditambahkan.');
         return redirect('/daftar-mobil');
     }
@@ -80,5 +87,10 @@ class MobilController extends Controller
         $mobil->update($request->all());
         session()->flash('success', 'Data berhasil ditambahkan.');
         return redirect('/daftar-mobil');
+    }
+
+    public function detail($id){
+        $mobil = Mobil::where('id',$id)->first();
+        return view('/mobil/detail_mobil',['mobil'=>$mobil]);
     }
 }

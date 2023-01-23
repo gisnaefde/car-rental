@@ -16,7 +16,7 @@
         <!-- Outer Row -->
         <div class="col-lg-12">
             <div class="p-5">
-                <form action="/tambah-mobil" method="POST">
+                <form action="/tambah-mobil" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col">
@@ -49,6 +49,9 @@
                             </div>
                             <div class="form-group mt-2">
                                 <input type="text" name="harga_sewa_hari" class="form-control " placeholder="Harga Sewa/Hari">
+                            </div>
+                            <div class="form-group mt-2">
+                                <input type="file" name="car_image" class="form-control " placeholder="Gambar Mobil">
                             </div>
                         </div>
                     </div>

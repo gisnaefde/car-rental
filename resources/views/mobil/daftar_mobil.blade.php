@@ -13,18 +13,24 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-@else
+@elseif(session('error'))
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
   {{ session('error') }}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
+@else
+
 @endif
 <div class="card shadow mb-4">
-    <div class="d-sm-flex  card-header py-3 justify-content-between mb-4">
+    <div class="d-flex  card-header py-3 justify-content-between mb-4">
         <h6 class="m-0 font-weight-bold text-primary">Daftar Mobil</h6>
-        <a href="/tambah-mobil" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Tambah Mobil</a>
+        <div>
+            <a href="/tambah-mobil" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-success shadow-sm">Tersedia</a>
+            <a href="/daftar-mobil-tersedia" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-danger shadow-sm">Di Pinjam</a>
+            <a href="/daftar-mobil-dipinjam" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-primary shadow-sm">Tambah Mobil</a>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -64,7 +70,7 @@
                         <td style="color:red">dipinjam</td>
                         @endif
                         <td>
-                            <a class="text-primary mr-2">
+                            <a class="text-primary mr-2" href="/detail-mobil/{{$item->id}}">
                                 <i class="fas fa-eye"></i>
                                 <!-- <i class="fas fa-angle-up"></i> -->
                             </a>
