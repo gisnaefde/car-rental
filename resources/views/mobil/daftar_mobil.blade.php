@@ -7,9 +7,19 @@
 
 @section('content')
 @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ session('success') }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@else
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{ session('error') }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 @endif
 <div class="card shadow mb-4">
     <div class="d-sm-flex  card-header py-3 justify-content-between mb-4">
@@ -53,7 +63,16 @@
                         @else
                         <td style="color:red">dipinjam</td>
                         @endif
-                        <td>Edit</td>
+                        <td>
+                            <a class="text-primary mr-2">
+                                <i class="fas fa-eye"></i>
+                                <!-- <i class="fas fa-angle-up"></i> -->
+                            </a>
+                            <a class="text-warning" href="/edit-mobil/{{$item->id}}" >
+                                <i class="fas fa-edit"></i>
+                                <!-- <i class="fas fa-angle-up"></i> -->
+                            </a>
+                        </td>
 
                     </tr>
                     @endforeach

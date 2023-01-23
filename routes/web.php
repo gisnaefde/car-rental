@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('/daftar-mobil', [MobilController::class,'daftar_mobil']);
 Route::get('/tambah-mobil', [MobilController::class,'tambah_mobil']);
 Route::post('/tambah-mobil', [MobilController::class,'store']);
+Route::get('/edit-mobil/{id}', [MobilController::class,'edit']);
+Route::put('/update-mobil/{id}', [MobilController::class,'update']);
