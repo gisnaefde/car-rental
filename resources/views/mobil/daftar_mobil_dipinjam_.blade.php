@@ -1,31 +1,31 @@
 @extends('layout.app')
-@section('title','daftar-mobil')
+@section('title','daftar-mobil-tesedia')
 
 @section('link')
-<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 @endsection
 
 @section('content')
 @if (session('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  {{ session('success') }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+    {{ session('success') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 @elseif(session('error'))
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  {{ session('error') }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+    {{ session('error') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 @else
 
 @endif
 <div class="card shadow mb-4">
     <div class="d-flex  card-header py-3 justify-content-between mb-4">
-        <h6 class="m-0 font-weight-bold text-primary">Daftar Mobil</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Mobil Dipinjam</h6>
         <div>
             <a href="/daftar-mobil-tersedia" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-success shadow-sm">Tersedia</a>
             <a href="/daftar-mobil-dipinjam" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-danger shadow-sm">Di Pinjam</a>
@@ -52,7 +52,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($daftar_mobil as $item)
+                    @foreach($mobil_dipinjam_ as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$item->type}}</td>
@@ -74,7 +74,7 @@
                                 <i class="fas fa-eye"></i>
                                 <!-- <i class="fas fa-angle-up"></i> -->
                             </a>
-                            <a class="text-warning" href="/edit-mobil/{{$item->id}}" >
+                            <a class="text-warning" href="/edit-mobil/{{$item->id}}">
                                 <i class="fas fa-edit"></i>
                                 <!-- <i class="fas fa-angle-up"></i> -->
                             </a>
@@ -90,7 +90,7 @@
 @endsection
 
 @section('script')
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="js/demo/datatables-demo.js"></script>
+<script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('js/demo/datatables-demo.js')}}"></script>
 @endsection

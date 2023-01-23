@@ -19,8 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('/daftar-mobil', [MobilController::class,'daftar_mobil']);
-// Route::get('/daftar-mobil-tersedia', [MobilController::class,'daftar_mobil_tersedia']);
-// Route::get('/daftar-mobil-dipinjam', [MobilController::class,'daftar_mobil_dipinjam']);
+Route::get('/daftar-mobil-tersedia', [MobilController::class,'daftar_mobil_tersedia']);
+Route::get('/daftar-mobil-dipinjam', [MobilController::class,'daftar_mobil_dipinjam_']);
 Route::get('/tambah-mobil', [MobilController::class,'tambah_mobil']);
 Route::post('/tambah-mobil', [MobilController::class,'store']);
 Route::get('/edit-mobil/{id}', [MobilController::class,'edit']);

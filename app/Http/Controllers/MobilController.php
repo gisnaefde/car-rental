@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mobil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class MobilController extends Controller
@@ -20,6 +21,15 @@ class MobilController extends Controller
     public function daftar_mobil(){
         $mobil = Mobil::all();
         return view('mobil/daftar_mobil',['daftar_mobil'=>$mobil]);
+    }
+    public function daftar_mobil_tersedia(){
+        $mobil_tersedia = Mobil::where('status', 1)->get();
+        return view ('/mobil/daftar_mobil_tersedia',['mobil_tersedia'=>$mobil_tersedia]);
+    }
+
+    public function daftar_mobil_dipinjam_(){
+        $mobil_dipinjam = Mobil::where('status', 0)->get();
+        return view ('/mobil/daftar_mobil_dipinjam_',['mobil_dipinjam_'=>$mobil_dipinjam]);
     }
 
     public function tambah_mobil(){
@@ -93,4 +103,5 @@ class MobilController extends Controller
         $mobil = Mobil::where('id',$id)->first();
         return view('/mobil/detail_mobil',['mobil'=>$mobil]);
     }
+
 }
