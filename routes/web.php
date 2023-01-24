@@ -29,3 +29,5 @@ Route::put('/update-mobil/{id}', [MobilController::class, 'update']);
 Route::get('/detail-mobil/{id}', [MobilController::class, 'detail']);
 
 Route::get('/info',[InfoController::class, 'info']);
+Route::get('/info-edit/{id}',[InfoController::class, 'edit']);
+Route::put('/info-edit/{id}',[InfoController::class, 'update']);

@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Info extends Model
 {
-    protected $table="info";
+    protected $table = "info";
     use HasFactory;
+    protected $fillable = [
+        'info',
+        'no_admin',
+        'sdk',
+        'lokasi',
+        'procedure',
+    ];
 }
