@@ -12,4 +12,9 @@ class InfoController extends Controller
         $info = Info::all();
         return response()->json($info);
     }
+
+    public function info(){
+        $info = Info::all();
+        return view('/info/info',['info'=>$info]);
+    }
 }

@@ -23,6 +23,11 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Daftar Mobil</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="/info">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Info</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
