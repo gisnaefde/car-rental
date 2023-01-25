@@ -23,6 +23,6 @@ class Mobil extends Model
         'nopol',
         'harga_sewa_jam',
         'harga_sewa_hari',
-        'status'
+        'car_image',
     ];
 }

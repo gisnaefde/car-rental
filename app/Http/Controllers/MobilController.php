@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Mobil;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class MobilController extends Controller
@@ -48,7 +47,7 @@ class MobilController extends Controller
             'nopol' => 'required|string|max:255',
             'harga_sewa_jam' => 'required|integer',
             'harga_sewa_hari' => 'required|integer',
-            'car_image' => 'required',
+            'car_image' => 'required|mimes:jpg,png,jpeg',
         ]);
 
         if ($validated->fails()) {
@@ -57,14 +56,25 @@ class MobilController extends Controller
             return redirect('/tambah-mobil');
         }
 
-        $nameImage="";
-        if($request->file('car_image')){
-            $name = $request->car_image->getClientOriginalName();
-            $nameImage = now()->timestamp.'-'.$name;
-            $request->car_image->storeAs('car_image', $nameImage);
-        }
-        $request['car_image'] = $nameImage;
-        $mobil = Mobil::create($request->all());
+        $name = $request->file('car_image')->getClientOriginalName();
+        $nameImage = now()->timestamp.'-'.$name;
+        $request->file('car_image')->storeAs('public/car_image', $nameImage);
+        $mobil = new Mobil([
+            'type' => $request->type,
+            'merk' => $request->merk,
+            'jumlah_kursi' => $request->jumlah_kursi,
+            'bahan_bakar' => $request->bahan_bakar,
+            'warna' => $request->warna,
+            'tahun' => $request->tahun,
+            'nopol' => $request->nopol,
+            'harga_sewa_jam' => $request->harga_sewa_jam,
+            'harga_sewa_hari' => $request->harga_sewa_hari,
+            'car_image'=> $nameImage,
+        ]);
+        $mobil->save();
+
+        // $request['car_image'] = $nameImage;
+        // $mobil = Mobil::create($request->all());
         session()->flash('success', 'Data berhasil ditambahkan.');
         return redirect('/daftar-mobil');
     }
