@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\MobilController;
+use App\Http\Controllers\TenantController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,8 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
+Route::get('dashboard',[DashboardController::class,'index']);
+
 Route::get('/daftar-mobil', [MobilController::class, 'daftar_mobil']);
 Route::get('/daftar-mobil-tersedia', [MobilController::class, 'daftar_mobil_tersedia']);
 Route::get('/daftar-mobil-dipinjam', [MobilController::class, 'daftar_mobil_dipinjam_']);
@@ -31,3 +36,5 @@ Route::get('/detail-mobil/{id}', [MobilController::class, 'detail']);
 Route::get('/info',[InfoController::class, 'info']);
 Route::get('/info-edit/{id}',[InfoController::class, 'edit']);
 Route::put('/info-edit/{id}',[InfoController::class, 'update']);
+
+Route::get('/tenants',[TenantController::class, 'tenants']);

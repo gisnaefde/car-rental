@@ -4,7 +4,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+            <i class="fas fa-car"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Car Rental</div>
     </a>
@@ -13,17 +13,38 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item">
+        <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="/daftar-mobil">
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#mobil" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Daftar Mobil</span></a>
+            <span>List Mobil</span>
+        </a>
+        <div id="mobil" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">List Mobil:</h6>
+                <a href="/daftar-mobil" class="collapse-item" href="buttons.html">List Mobil</a>
+                <a href="/daftar-mobil-tersedia" class="collapse-item" href="buttons.html">Tersedia</a>
+                <a href="/daftar-mobil-dipinjam" class="collapse-item" href="cards.html">Di Pinjam</a>
+            </div>
+        </div>
     </li>
-    <li class="nav-item active">
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#sewa" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>List Sewa</span>
+        </a>
+        <div id="sewa" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">List Sewa:</h6>
+                <a href="/tenants" class="collapse-item" href="buttons.html">List Penyewa</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="/info">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Info</span></a>
