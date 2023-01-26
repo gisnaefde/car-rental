@@ -1,5 +1,21 @@
 @extends('layout.app')
 @section('title','edit-mobil')
+
+@section('link')
+<style>
+    input[type="file"] {
+        display: none;
+    }
+
+    .custom-file-upload {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+</style>
+@endsection
+
 @section('content')
 
 @if (session('error'))
@@ -16,7 +32,7 @@
         <!-- Outer Row -->
         <div class="col-lg-12">
             <div class="p-5">
-                <form action="/update-mobil/{{$mobil->id}}" method="POST">
+                <form action="/update-mobil/{{$mobil->id}}" method="POST"  enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="row">
@@ -50,6 +66,12 @@
                             </div>
                             <div class="form-group mt-2">
                                 <input type="text" name="harga_sewa_hari" class="form-control " placeholder="Harga Sewa/Hari" value="{{$mobil->harga_sewa_hari}}">
+                            </div>
+                            <div class="form-group mt-2 ">
+                                <label class="custom-file-upload" style="border-radius: 8px;">
+                                    <p class="m-0">Masukan Gambar Mobil <span class="fas fa-fw fa-camera"></span></p>
+                                    <input type="file" name="car_image" class="form-control " placeholder="Gambar Mobil">
+                                </label>
                             </div>
                         </div>
                     </div>

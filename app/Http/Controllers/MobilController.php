@@ -85,7 +85,6 @@ class MobilController extends Controller
     }
 
     public function update($id, Request $request){
-        $id_ = $id;
         $mobil = Mobil::where('id',$id)->first();
         $validated = Validator::make($request->all(),[
             'type' => 'required|string|max:255',
@@ -97,6 +96,7 @@ class MobilController extends Controller
             'nopol' => 'required|string|max:255',
             'harga_sewa_jam' => 'required|integer',
             'harga_sewa_hari' => 'required|integer',
+            'car_image' => 'required|mimes:jpg,png,jpeg',
 
         ]);
         if ($validated->fails()) {
@@ -104,8 +104,23 @@ class MobilController extends Controller
             session()->flash('error', 'Gagal menambahkan data, pastikan semua isian terisi.');
             return redirect('/daftar-mobil');
         }
-        $mobil->update($request->all());
-        session()->flash('success', 'Data berhasil ditambahkan.');
+        $name = $request->file('car_image')->getClientOriginalName();
+        $nameImage = now()->timestamp.'-'.$name;
+        $request->file('car_image')->storeAs('public/car_image', $nameImage);
+
+        $mobil->update([
+            'type' => $request->type,
+            'merk' => $request->merk,
+            'jumlah_kursi' => $request->jumlah_kursi,
+            'bahan_bakar' => $request->bahan_bakar,
+            'warna' => $request->warna,
+            'tahun' => $request->tahun,
+            'nopol' => $request->nopol,
+            'harga_sewa_jam' => $request->harga_sewa_jam,
+            'harga_sewa_hari' => $request->harga_sewa_hari,
+            'car_image'=> $nameImage,
+        ]);
+        session()->flash('success', 'Data berhasil diedit.');
         return redirect('/daftar-mobil');
     }
 

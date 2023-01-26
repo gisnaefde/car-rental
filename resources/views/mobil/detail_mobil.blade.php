@@ -13,7 +13,7 @@
             <!-- Nested Row within Card Body -->
             <div class="row">
                 <div class="col-lg-5 d-flex justify-content-center align-items-center">
-                    <img src="{{asset('storage/car_image/'.$mobil->car_image)}}" style="height: 200px" ></img>
+                    <img src="{{$mobil->car_image != null ? asset('/storage/car_image/'.$mobil->car_image): asset('/img/default.png')}}" style="height: 200px" ></img>
                 </div>
                 <div class="col-lg-7">
                     <div class="p-5">
