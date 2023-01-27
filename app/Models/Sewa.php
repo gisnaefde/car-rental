@@ -17,6 +17,6 @@ class Sewa extends Model
 
     public function mobil()
     {
-        return $this->belongsTo(Tenant::class);
+        return $this->belongsTo(Mobil::class);
     }
 }

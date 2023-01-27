@@ -19,18 +19,9 @@
             <span>Dashboard</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#mobil" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="/daftar-mobil">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>List Mobil</span>
-        </a>
-        <div id="mobil" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">List Mobil:</h6>
-                <a href="/daftar-mobil" class="collapse-item" href="buttons.html">List Mobil</a>
-                <a href="/daftar-mobil-tersedia" class="collapse-item" href="buttons.html">Tersedia</a>
-                <a href="/daftar-mobil-dipinjam" class="collapse-item" href="cards.html">Di Pinjam</a>
-            </div>
-        </div>
+            <span>List Mobil</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#sewa" aria-expanded="true" aria-controls="collapseTwo">
@@ -41,6 +32,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List Sewa:</h6>
                 <a href="/tenants" class="collapse-item" href="buttons.html">Penyewa</a>
+                <a href="/sewa" class="collapse-item" href="buttons.html">Sewa</a>
             </div>
         </div>
     </li>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\MobilController;
+use App\Http\Controllers\SewaController;
 use App\Http\Controllers\TenantController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -38,3 +39,6 @@ Route::get('/info-edit/{id}',[InfoController::class, 'edit']);
 Route::put('/info-edit/{id}',[InfoController::class, 'update']);
 
 Route::get('/tenants',[TenantController::class, 'tenants']);
+
+Route::get('/sewa',[SewaController::class,'sewa']);
+Route::get('/detail-sewa/{id}',[SewaController::class,'detail_sewa']);
