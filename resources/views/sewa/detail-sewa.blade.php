@@ -8,7 +8,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Detail Sewa</h6>
     </div>
 
-    <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card o-hidden border-0 shadow-lg ">
         <div class="card-body p-0">
             <div class="text-center mt-5">
                 <h1 class="h4 text-gray-900 mb-4">Detail</h1>
@@ -59,12 +59,18 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="ml-3 mb-2 text-capitalize row">: {{$detail_sewa->tenant->email}}</div>
-                                <div class="ml-3 mb-2 text-capitalize row">: {{$detail_sewa->tanggal_sewa}}</div>
-                                <div class="ml-3 mb-2 text-capitalize row">: {{$detail_sewa->tanggal_kembali}}</div>
-                                <div class="ml-3 mb-2 text-capitalize row">: {{$detail_sewa->lama_sewa}}</div>
-                                <div class="ml-3 mb-2 text-capitalize row">: {{$detail_sewa->harga_sewa}}</div>
-                                <div class="ml-3 mb-2 text-capitalize row">: {{$detail_sewa->denda}}</div>
-                                <div class="ml-3 mb-2 text-capitalize row">: {{$detail_sewa->status}}</div>
+                                <div class="ml-3 mb-2 text-capitalize row">: {{date('d F Y , H:i', strtotime($detail_sewa->tanggal_sewa))}}</div>
+                                <div class="ml-3 mb-2 text-capitalize row">: {{date('d F Y , H:i', strtotime($detail_sewa->tanggal_kembali))}}</div>
+                                <div class="ml-3 mb-2 text-capitalize row">: {{$detail_sewa->lama_sewa}} Hari</div>
+                                <div class="ml-3 mb-2 text-capitalize row">: Rp. {{number_format($detail_sewa->harga_sewa, 0, ',', '.')}}</div>
+                                <div class="ml-3 mb-2 text-capitalize row">: Rp. {{number_format($detail_sewa->denda, 0, ',', '.')}}</div>
+                                @if($detail_sewa->status == 0)
+                                <div class="ml-3 mb-2 text-capitalize row">: Belum Dikembalikan</div>
+                                @elseif($detail_sewa->status == 1)
+                                <div class="ml-3 mb-2 text-capitalize row">: Dikembalikan Terlambat</div>
+                                @else
+                                <div class="ml-3 mb-2 text-capitalize row">: Dikembalikan Tepat Waktu</div>
+                                @endif
 
                             </div>
                         </div>

@@ -25,7 +25,7 @@
 @endif
 <div class="card shadow mb-4">
     <div class="d-flex  card-header py-3 justify-content-between mb-4">
-        <h6 class="m-0 font-weight-bold text-primary">Daftar Mobil</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Sewa Mobil Disewa</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -45,22 +45,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($sewa as $s)
+                    @foreach($disewa as $s)
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{ $s->tenant->nama }}</td>
                         <td>{{ $s->mobil->type }}</td>
-                        <td>{{ $s->tanggal_sewa }}</td>
-                        <td>{{ $s->tanggal_kembali }}</td>
-                        <td>{{ $s->lama_sewa }}</td>
-                        <td>{{ $s->harga_sewa }}</td>
-                        <td>{{ $s->denda }}</td>
+                        <td>{{date('d F Y H:i', strtotime( $s->tanggal_sewa))}}</td>
+                        <td>{{date('d F Y H:i', strtotime($s->tanggal_kembali))}}</td>
+                        <td>{{ $s->lama_sewa }} Hari</td>
+                        <td>{{number_format($s->harga_sewa, 0, ',', '.')}}</td>
+                        <td>{{number_format($s->denda, 0, ',', '.')}}</td>
                         @if($s->status=='0')
                         <td style="color:red">Belum Dikembalikan</td>
                         @elseif($s->status=='1')
                         <td style="color:blue">Dikembalikan Terlambat</td>
+                        @elseif($s->status=='2')
+                        <td >Tepat Waktu</td>
                         @else
-                        <td style="color:green">Dikembalikan Tepat Waktu</td>
+                        <td style="color: green;">Disewa</td>
                         @endif
                         <td>
                             <a class="text-primary mr-2" href="/detail-sewa/{{$s->id}}">

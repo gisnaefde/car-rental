@@ -28,7 +28,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Daftar Mobil Tersedia</h6>
         <div>
             <a href="/daftar-mobil-tersedia" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-success shadow-sm">Tersedia</a>
-            <a href="/daftar-mobil-dipinjam" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-danger shadow-sm">Di Pinjam</a>
+            <a href="/daftar-mobil-dipinjam" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-danger shadow-sm">Disewa</a>
             <a href="/tambah-mobil" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-primary shadow-sm">Tambah Mobil</a>
         </div>
     </div>
@@ -67,7 +67,7 @@
                         @if($item->status=='1')
                         <td style="color:green">tersedia</td>
                         @else
-                        <td style="color:red">dipinjam</td>
+                        <td style="color:red">disewa</td>
                         @endif
                         <td>
                             <a class="text-primary mr-2" href="/detail-mobil/{{$item->id}}">

@@ -31,8 +31,9 @@
         <div id="sewa" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">List Sewa:</h6>
-                <a href="/tenants" class="collapse-item" href="buttons.html">Penyewa</a>
-                <a href="/sewa" class="collapse-item" href="buttons.html">Sewa</a>
+                <a href="/tenants" class="collapse-item" >Penyewa</a>
+                <a href="/disewa" class="collapse-item" >Disewa</a>
+                <a href="/rekap-sewa" class="collapse-item" >Rekap Sewa</a>
             </div>
         </div>
     </li>

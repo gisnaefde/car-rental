@@ -51,7 +51,7 @@
                                 @if ($mobil->status == 1)
                                 <div class="ml-3 mb-2 text-capitalize row">: Tersedia</div>
                                 @else
-                                <div class="ml-3 mb-2 text-capitalize row">: Dipinjam</div>
+                                <div class="ml-3 mb-2 text-capitalize row">: Disewa</div>
                                 @endif
                             </div>
                         </div>

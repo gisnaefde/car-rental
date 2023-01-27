@@ -40,5 +40,8 @@ Route::put('/info-edit/{id}',[InfoController::class, 'update']);
 
 Route::get('/tenants',[TenantController::class, 'tenants']);
 
-Route::get('/sewa',[SewaController::class,'sewa']);
+Route::get('/rekap-sewa',[SewaController::class,'rekap_sewa']);
 Route::get('/detail-sewa/{id}',[SewaController::class,'detail_sewa']);
+Route::get('/tepat-waktu',[SewaController::class,'tepat_waktu']);
+Route::get('/terlambat',[SewaController::class,'terlambat']);
+Route::get('/disewa',[SewaController::class,'disewa']);
