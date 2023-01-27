@@ -9,4 +9,9 @@ class Tenant extends Model
 {
     use HasFactory;
     protected $table = 'tenants';
+
+    public function sewa()
+    {
+        return $this->hasMany(Sewa::class);
+    }
 }

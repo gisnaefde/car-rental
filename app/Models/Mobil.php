@@ -13,6 +13,12 @@ class Mobil extends Model
     {
         return $this->hasMany(StockMobil::class);
     }
+
+    public function sewa()
+    {
+        return $this->hasMany(Sewa::class);
+    }
+
     protected $fillable = [
         'type',
         'merk',
