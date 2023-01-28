@@ -68,8 +68,10 @@
                                 <div class="ml-3 mb-2 text-capitalize row">: Belum Dikembalikan</div>
                                 @elseif($detail_sewa->status == 1)
                                 <div class="ml-3 mb-2 text-capitalize row">: Dikembalikan Terlambat</div>
-                                @else
+                                @elseif($detail_sewa->status == 2)
                                 <div class="ml-3 mb-2 text-capitalize row">: Dikembalikan Tepat Waktu</div>
+                                @else
+                                <div class="ml-3 mb-2 text-capitalize row">: Disewa</div>
                                 @endif
 
                             </div>

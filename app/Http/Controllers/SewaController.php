@@ -32,4 +32,9 @@ class SewaController extends Controller
         $disewa = Sewa::with(['tenant', 'mobil'])->whereIn('status', [3])->get();
         return view('sewa/disewa', ['disewa'=>$disewa]);
     }
+
+    public function belum_kembali(){
+        $belum_kembali = Sewa::with(['tenant', 'mobil'])->whereIn('status', [0])->get();
+        return view('sewa/belum_kembali', ['belum_kembali'=>$belum_kembali]);
+    }
 }

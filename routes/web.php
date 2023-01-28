@@ -45,3 +45,4 @@ Route::get('/detail-sewa/{id}',[SewaController::class,'detail_sewa']);
 Route::get('/tepat-waktu',[SewaController::class,'tepat_waktu']);
 Route::get('/terlambat',[SewaController::class,'terlambat']);
 Route::get('/disewa',[SewaController::class,'disewa']);
+Route::get('/belum-kembali',[SewaController::class,'belum_kembali']);
