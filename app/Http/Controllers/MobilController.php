@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mobil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class MobilController extends Controller
@@ -19,7 +20,23 @@ class MobilController extends Controller
     //Monolite
     public function daftar_mobil(){
         $mobil = Mobil::all();
-        return view('mobil/daftar_mobil',['daftar_mobil'=>$mobil]);
+        // $status = $mobil->count();
+        // $data = [];
+
+        // foreach ($mobil as $type => $mobilGroup) {
+        //     foreach ($mobilGroup as $mobil) {
+        //         $data[$type][] = [
+        //             'id' => $mobil->id,
+        //             'merk' => $mobil->merk,
+        //             'type' => $mobil->type,
+        //             'bahan_bakar' => $mobil->bahan_bakar,
+        //             'car_image' =>$mobil->car_image,
+        //             'status' =>$mobil->status,
+        //         ];
+        //     }
+        // }
+        // dd($mobil);
+        return view('mobil/daftar_mobil',['daftar_mobil'=>$mobil ]);
     }
     public function daftar_mobil_tersedia(){
         $mobil_tersedia = Mobil::where('status', 1)->get();
