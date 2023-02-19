@@ -52,6 +52,7 @@ class SewaController extends Controller
 
         // save the model to the database
         $sewa->save();
+
     }
 
     public function rekap_sewa()

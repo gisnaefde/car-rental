@@ -20,23 +20,18 @@ class MobilController extends Controller
     //Monolite
     public function daftar_mobil(){
         $mobil = Mobil::all();
-        // $status = $mobil->count();
-        // $data = [];
+        $groupByType = Mobil::groupBy('type')->get();
+        // $groupByType = Mobil::orderBy('type')->get()->groupBy('type'
+        $jumlahMobil = Mobil::selectRaw('type, COUNT(*) as jumlah')
+                    ->groupBy('type')
+                    ->get();
 
-        // foreach ($mobil as $type => $mobilGroup) {
-        //     foreach ($mobilGroup as $mobil) {
-        //         $data[$type][] = [
-        //             'id' => $mobil->id,
-        //             'merk' => $mobil->merk,
-        //             'type' => $mobil->type,
-        //             'bahan_bakar' => $mobil->bahan_bakar,
-        //             'car_image' =>$mobil->car_image,
-        //             'status' =>$mobil->status,
-        //         ];
-        //     }
-        // }
-        // dd($mobil);
-        return view('mobil/daftar_mobil',['daftar_mobil'=>$mobil ]);
+        $jumlahMobilPerStatus = Mobil::select('type', 'status', DB::raw('COUNT(*) as jumlah'))
+                    ->groupBy('type', 'status')
+                    ->get();
+        // dd($jumlahMobilPerStatus);
+
+        return view('mobil/daftar_mobil',['daftar_mobil'=>$mobil,"groupByType"=>$groupByType,"jumlahMobil"=>$jumlahMobil, "jumlahMobilPerStatus=>$jumlahMobilPerStatus" ]);
     }
     public function daftar_mobil_tersedia(){
         $mobil_tersedia = Mobil::where('status', 1)->get();
