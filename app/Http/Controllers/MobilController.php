@@ -31,7 +31,7 @@ class MobilController extends Controller
                     ->get();
         // dd($jumlahMobilPerStatus);
 
-        return view('mobil/daftar_mobil',['daftar_mobil'=>$mobil,"groupByType"=>$groupByType,"jumlahMobil"=>$jumlahMobil, "jumlahMobilPerStatus=>$jumlahMobilPerStatus" ]);
+        return view('mobil/daftar_mobil',['daftar_mobil'=>$mobil,"groupByType"=>$groupByType,"jumlahMobil"=>$jumlahMobil, "jumlahMobilPerStatus"=>$jumlahMobilPerStatus ]);
     }
     public function daftar_mobil_tersedia(){
         $mobil_tersedia = Mobil::where('status', 1)->get();

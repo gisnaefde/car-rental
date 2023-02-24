@@ -35,6 +35,7 @@
     <div class="card-body">
         <div class="table-responsive">
             <div class="row">
+
                 @foreach($groupByType as $item)
                 <div class="col-xl-3 col-md-6 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
@@ -53,19 +54,32 @@
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <p>Harga : {{$item->harga_sewa_hari}}</p>
                                     </div>
+
+                                    @foreach($jumlahMobilPerStatus as $status)
+                                    @if($item->type == $status->type)
                                     <div class="row ml-0 d-flex justify-content-between">
                                         <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1"> Tersedia
                                             <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1 d-flex justify-content-center">
-                                            <p>{{$item->status}}</p>
+                                                @if($status->status == 1)
+                                                <p>{{$status->jumlah}}</p>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1"> Dipinjam
                                             <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1 d-flex justify-content-center">
-                                                <p>{{$item->status}}</p>
+                                                @if($status->status == 0)
+                                                    @if($status->jumlah >= 1)
+                                                    <p>{{$status->jumlah}}</p>
+                                                    @else
+                                                    <p>0</p>
+                                                    @endif
+                                                @endif
                                             </div>
                                         </div>
 
                                     </div>
+                                    @endif
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center">
