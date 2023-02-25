@@ -25,6 +25,7 @@ class MobilController extends Controller
         $jumlahMobil = Mobil::selectRaw('type, COUNT(*) as jumlah')
                     ->groupBy('type')
                     ->get();
+        // dd($groupByType);
 
         $jumlahMobilPerStatus = Mobil::select('type', 'status', DB::raw('COUNT(*) as jumlah'))
                     ->groupBy('type', 'status')
@@ -33,6 +34,14 @@ class MobilController extends Controller
 
         return view('mobil/daftar_mobil',['daftar_mobil'=>$mobil,"groupByType"=>$groupByType,"jumlahMobil"=>$jumlahMobil, "jumlahMobilPerStatus"=>$jumlahMobilPerStatus ]);
     }
+
+    public function daftar_mobil_detail($id){
+        $groupByType = Mobil::groupBy('type')->get();
+        $mobil = $groupByType->where('id',$id)->first();
+        // dd($mobil);
+        return view('mobil/daftar_mobil_detail',['mobil'=>$mobil]);
+    }
+
     public function daftar_mobil_tersedia(){
         $mobil_tersedia = Mobil::where('status', 1)->get();
         return view ('/mobil/daftar_mobil_tersedia',['mobil_tersedia'=>$mobil_tersedia]);

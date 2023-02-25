@@ -26,6 +26,7 @@ Route::get('/', function () {
 Route::get('dashboard',[DashboardController::class,'index']);
 
 Route::get('/daftar-mobil', [MobilController::class, 'daftar_mobil']);
+Route::get('/daftar-mobil/{id}',[MobilController::class, 'daftar_mobil_detail']);
 Route::get('/daftar-mobil-tersedia', [MobilController::class, 'daftar_mobil_tersedia']);
 Route::get('/daftar-mobil-dipinjam', [MobilController::class, 'daftar_mobil_dipinjam_']);
 Route::get('/tambah-mobil', [MobilController::class, 'tambah_mobil']);

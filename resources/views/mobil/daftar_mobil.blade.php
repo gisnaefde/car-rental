@@ -41,7 +41,7 @@
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="d-flex justify-content-center">
-                                <img src="storage/car_image/1674660730-yaris.png" style="width: 150px;">
+                                <img src="{{$item->car_image != null ? asset('/storage/car_image/'.$item->car_image): asset('/img/default.png')}}" style="width: 150px;" ></img>
                             </div>
                             <div class="row no-gutters align-items-center mt-2">
                                 <div class="col mr-2">
@@ -56,34 +56,30 @@
                                     </div>
 
                                     @foreach($jumlahMobilPerStatus as $status)
-                                    @if($item->type == $status->type)
-                                    <div class="row ml-0 d-flex justify-content-between">
-                                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1"> Tersedia
-                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1 d-flex justify-content-center">
-                                                @if($status->status == 1)
-                                                <p>{{$status->jumlah}}</p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1"> Dipinjam
-                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1 d-flex justify-content-center">
-                                                @if($status->status == 0)
-                                                    @if($status->jumlah >= 1)
-                                                    <p>{{$status->jumlah}}</p>
-                                                    @else
-                                                    <p>0</p>
-                                                    @endif
-                                                @endif
-                                            </div>
-                                        </div>
+                                        @if($item->type == $status->type)
+                                            <div class="row ml-0 d-flex justify-content-between">
+                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1"> Tersedia
+                                                    <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1 d-flex justify-content-center">
+                                                        @if($status->status == 1)
+                                                            <p>{{$status->jumlah}}</p>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1"> Dipinjam
+                                                    <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1 d-flex justify-content-center">
+                                                        @if($status->status == 0)
+                                                            <p>{{$status->jumlah}}</p>
+                                                        @endif
+                                                    </div>
+                                                </div>
 
-                                    </div>
-                                    @endif
+                                            </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary">Detail</a>
+                                <a href="/daftar-mobil/{{$item->id}}" class="btn btn-sm btn-primary">Detail</a>
                             </div>
                         </div>
                     </div>
