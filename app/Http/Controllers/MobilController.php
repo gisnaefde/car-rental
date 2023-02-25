@@ -42,6 +42,11 @@ class MobilController extends Controller
         return view('mobil/daftar_mobil_detail',['mobil'=>$mobil]);
     }
 
+    public function daftar_mobil_tabel(){
+        $mobil = Mobil::all();
+        return view('mobil/daftar_mobil_tabel',['mobil'=>$mobil]);
+    }
+
     public function daftar_mobil_tersedia(){
         $mobil_tersedia = Mobil::where('status', 1)->get();
         return view ('/mobil/daftar_mobil_tersedia',['mobil_tersedia'=>$mobil_tersedia]);

@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title','daftar-mobil-tesedia')
+@section('title','daftar-mobil')
 
 @section('link')
 <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
@@ -25,10 +25,10 @@
 @endif
 <div class="card shadow mb-4">
     <div class="d-flex  card-header py-3 justify-content-between mb-4">
-        <h6 class="m-0 font-weight-bold text-primary">Daftar Mobil Dipinjam</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Mobil</h6>
         <div>
-            <a href="/daftar-mobil-tabel" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-secondary shadow-sm">Daftar Mobil</a>
             <a href="/daftar-mobil-tersedia" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-success shadow-sm">Tersedia</a>
+            <a href="/daftar-mobil-dipinjam" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-danger shadow-sm">Disewa</a>
             <a href="/tambah-mobil" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-primary shadow-sm">Tambah Mobil</a>
         </div>
     </div>
@@ -52,7 +52,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($mobil_dipinjam_ as $item)
+                    @foreach($mobil as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$item->type}}</td>
