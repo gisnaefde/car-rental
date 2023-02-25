@@ -19,4 +19,9 @@ class Sewa extends Model
     {
         return $this->belongsTo(Mobil::class);
     }
+
+    protected $fillable = [
+        'tanggal_sewa',
+        'lama_sewa',
+    ];
 }

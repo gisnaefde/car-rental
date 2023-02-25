@@ -37,6 +37,12 @@
                 <a href="/belum-kembali" class="collapse-item" >Belum Kembali</a>
             </div>
         </div>
+
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/sewa">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Tambah Sewa</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/info">

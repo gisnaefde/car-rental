@@ -44,6 +44,8 @@ Route::get('/tenants',[TenantController::class, 'tenants']);
 
 Route::get('/sewa',[SewaController::class,'sewa']);
 Route::post('/sewa',[SewaController::class,'store']);
+Route::get('/sewa-nik',[SewaController::class,'sewa_nik']);
+Route::post('/sewa-nik',[SewaController::class,'store_sewa_nik']);
 Route::get('/rekap-sewa',[SewaController::class,'rekap_sewa']);
 Route::get('/detail-sewa/{id}',[SewaController::class,'detail_sewa']);
 Route::get('/tepat-waktu',[SewaController::class,'tepat_waktu']);

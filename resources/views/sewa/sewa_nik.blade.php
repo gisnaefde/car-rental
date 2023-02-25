@@ -13,6 +13,11 @@
     </div>
     <div class="card-body">
         <!-- Unutk memunculkan error jika terjadi kesalahan input -->
+        <div class="px-5">
+            <div class="alert alert-danger p-2">
+                <p>Data penyewa sudah ada sebelumnya, silakan pilih penyewa berdasarkan nik</p>
+            </div>
+        </div>
         @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -25,38 +30,17 @@
         <!-- Outer Row -->
         <div class="col-lg-12">
             <div class="p-5">
-                <form action="/sewa" method="POST" enctype="multipart/form-data">
+                <form action="/sewa-nik" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col">
-                            <!-- <div class="form-group mt-2">
+                            <div class="form-group mt-2">
                                 <select class="form-control" name="tenant_id">
+                                    <option>--Pilih NIK Penyewa--</option>
                                     @foreach($sewa as $item)
-                                    <option value="{{$item->tenant->id}}">{{$item->tenant->nama}}</option>
+                                    <option value="{{$item->tenant->id}}">{{$item->tenant->nik}}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                            <div class="form-group mt-2">
-                                <select class="form-control" name="mobil_id">
-                                    @foreach($sewa as $item)
-                                    <option value="{{$item->tenant->id}}">{{$item->mobil->type}}</option>
-                                    @endforeach
-                                </select>
-                            </div> -->
-                            <div class="form-group mt-2">
-                                <input type="text" name="nama" class="form-control " placeholder="Nama">
-                            </div>
-                            <div class="form-group mt-2">
-                                <input type="text" name="alamat" class="form-control " placeholder="Alamat">
-                            </div>
-                            <div class="form-group mt-2">
-                                <input type="number" name="no_hp" class="form-control " placeholder="Nomor Handphone">
-                            </div>
-                            <div class="form-group mt-2">
-                                <input type="number" name="nik" class="form-control " placeholder="NIK">
-                            </div>
-                            <div class="form-group mt-2">
-                                <input type="email" name="email" class="form-control " placeholder="Email">
                             </div>
                             <div class="form-group mt-2">
                                 <select class="form-control" name="mobil_id">
