@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title','daftar-mobil')
+@section('title','booking')
 
 @section('link')
 <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -25,11 +25,11 @@
 @endif
 <div class="card shadow mb-4">
     <div class="d-flex  card-header py-3 justify-content-between mb-4">
-        <h6 class="m-0 font-weight-bold text-primary">Daftar Sewa Mobil Terlambat</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Booking</h6>
         <div>
             <a href="/rekap-sewa" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-warning shadow-sm">Rekap Sewa</a>
-            <a href="/booking" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-success shadow-sm">Booking</a>
             <a href="/tepat-waktu" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-secondary shadow-sm">Tepat Waktu</a>
+            <a href="/terlambat" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-primary shadow-sm">Terlambat</a>
         </div>
     </div>
     <div class="card-body">
@@ -50,7 +50,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($terlambat as $s)
+                    @foreach($booking as $s)
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{ $s->tenant->nama }}</td>
@@ -60,8 +60,8 @@
                         <td>{{ $s->lama_sewa }} Hari</td>
                         <td>{{number_format($s->harga_sewa, 0, ',', '.')}}</td>
                         <td>{{number_format($s->denda, 0, ',', '.')}}</td>
-                        @if($s->status=='0')
-                        <td style="color:red">Belum Dikembalikan</td>
+                        @if($s->status=='4')
+                        <td style="color:green">Booking</td>
                         @elseif($s->status=='1')
                         <td style="color:blue">Dikembalikan Terlambat</td>
                         @elseif($s->status=='2')

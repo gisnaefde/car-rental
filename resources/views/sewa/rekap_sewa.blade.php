@@ -27,6 +27,7 @@
     <div class="d-flex  card-header py-3 justify-content-between mb-4">
         <h6 class="m-0 font-weight-bold text-primary">Daftar Sewa Mobil</h6>
         <div>
+            <a href="/booking" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-success shadow-sm">Booking</a>
             <a href="/tepat-waktu" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-secondary shadow-sm">Tepat Waktu</a>
             <a href="/terlambat" class="d-none d-sm-inline-block mx-1 btn btn-sm btn-primary shadow-sm">Terlambat</a>
         </div>

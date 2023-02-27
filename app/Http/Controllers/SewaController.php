@@ -129,6 +129,11 @@ class SewaController extends Controller
 
     }
 
+    public function booking(){
+        $booking = Sewa::with(['tenant', 'mobil'])->whereIn('status', [4])->get();
+        return view('sewa/booking', ['booking' => $booking]);
+    }
+
     public function rekap_sewa()
     {
         $sewa = Sewa::with(['tenant', 'mobil'])->whereIn('status', [1, 2])->get();
