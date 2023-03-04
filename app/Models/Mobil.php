@@ -19,6 +19,11 @@ class Mobil extends Model
         return $this->hasMany(Sewa::class);
     }
 
+    public function type()
+    {
+        return $this->belongsTo(TypeMobil::class, 'id_type');
+    }
+
     protected $fillable = [
         'type',
         'merk',

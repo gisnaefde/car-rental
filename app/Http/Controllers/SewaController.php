@@ -81,6 +81,7 @@ class SewaController extends Controller
 
         // save the model to the database
         $sewa->save();
+        return redirect('/disewa');
 
     }
 
@@ -126,6 +127,7 @@ class SewaController extends Controller
 
         // save the model to the database
         $sewa->save();
+        return redirect('/disewa');
 
     }
 
